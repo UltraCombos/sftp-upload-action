@@ -27274,6 +27274,7 @@ __webpack_require__.r(__webpack_exports__);
 
 function deploy(config, options) {
   const deployer = new sftp_sync_deploy_lib_sftpSync__WEBPACK_IMPORTED_MODULE_2__.SftpSync(config, options);
+  deployer.initQueuifiedSftp();
   config.remoteDir && deployer.queuifiedSftp.mkdir(config.remoteDir);
 
   console.log(chalk__WEBPACK_IMPORTED_MODULE_0___default().green(`* Deploying to host ${config.host}`));
