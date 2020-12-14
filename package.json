@@ -22,6 +22,6 @@
     "@actions/core": "^1.2.6",
     "@actions/github": "^4.0.0",
     "@vercel/ncc": "^0.24.1",
-    "sftp-sync-deploy": "^0.7.1"
+    "sftp-sync-deploy": "^0.8.0"
   }
 }
