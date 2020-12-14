@@ -4,8 +4,8 @@ import { SftpSync } from 'sftp-sync-deploy/lib/sftpSync';
 
 function deploy(config, options) {
   const deployer = new SftpSync(config, options);
-  deployer.initQueuifiedSftp();
-  config.remoteDir && deployer.queuifiedSftp.mkdir(config.remoteDir);
+  let queuifiedSftp =  deployer.initQueuifiedSftp();
+  config.remoteDir && queuifiedSftp.mkdir(config.remoteDir);
 
   console.log(chalk.green(`* Deploying to host ${config.host}`));
   console.log(chalk.grey('* local dir  = ') + deployer.localRoot);
