@@ -2,9 +2,9 @@ import chalk from 'chalk';
 import { SftpSyncConfig, SftpSyncOptions } from 'sftp-sync-deploy/lib/config';
 import { SftpSync } from 'sftp-sync-deploy/lib/sftpSync';
 
-function deploy(config, options) {
+async function deploy(config, options) {
   const deployer = new SftpSync(config, options);
-  let queuifiedSftp =  deployer.initQueuifiedSftp();
+  let queuifiedSftp = await deployer.initQueuifiedSftp();
   config.remoteDir && queuifiedSftp.mkdir(config.remoteDir);
 
   console.log(chalk.green(`* Deploying to host ${config.host}`));

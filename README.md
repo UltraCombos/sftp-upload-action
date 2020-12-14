@@ -1,3 +1,5 @@
+This is for UltraCombos internal use only. It is a quick and dirty fix for folder creation. Please don't use this action in your production environment.
+
 # sftp-upload-action
 
 this is a github action script for upload files to server via SFTP protocol.
