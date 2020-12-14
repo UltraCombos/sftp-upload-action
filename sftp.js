@@ -1,4 +1,20 @@
-const { deploy } = require('sftp-sync-deploy');
+import chalk from 'chalk';
+import { SftpSyncConfig, SftpSyncOptions } from 'sftp-sync-deploy/lib/config';
+import { SftpSync } from 'sftp-sync-deploy/lib/sftpSync';
+
+function deploy(config, options) {
+  const deployer = new SftpSync(config, options);
+  config.remoteDir && deployer.queuifiedSftp.mkdir(config.remoteDir);
+
+  console.log(chalk.green(`* Deploying to host ${config.host}`));
+  console.log(chalk.grey('* local dir  = ') + deployer.localRoot);
+  console.log(chalk.grey('* remote dir = ') + deployer.remoteRoot);
+  console.log('');
+
+  return deployer.sync();
+};
+
+// const { deploy } = require('sftp-sync-deploy');
 const core = require('@actions/core');
 const github = require('@actions/github');
 

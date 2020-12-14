@@ -10966,29 +10966,13 @@ function coerce (version) {
 
 /***/ }),
 
-/***/ 9405:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ 9387:
+/***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
+var __webpack_unused_export__;
 
-function __export(m) {
-    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-}
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-const chalk_1 = __webpack_require__(8707);
-const sftpSync_1 = __webpack_require__(1192);
-function deploy(config, options) {
-    const deployer = new sftpSync_1.SftpSync(config, options);
-    console.log(chalk_1.default.green(`* Deploying to host ${config.host}`));
-    console.log(chalk_1.default.grey('* local dir  = ') + deployer.localRoot);
-    console.log(chalk_1.default.grey('* remote dir = ') + deployer.remoteRoot);
-    console.log('');
-    return deployer.sync();
-}
-exports.deploy = deploy;
-;
-exports.default = deploy;
-__export(__webpack_require__(1192));
+__webpack_unused_export__ = ({ value: true });
 
 
 /***/ }),
@@ -27275,9 +27259,32 @@ function wrappy (fn, cb) {
 /***/ }),
 
 /***/ 5857:
-/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-const { deploy } = __webpack_require__(9405);
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var chalk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(8707);
+/* harmony import */ var chalk__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(chalk__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var sftp_sync_deploy_lib_config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9387);
+/* harmony import */ var sftp_sync_deploy_lib_sftpSync__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(1192);
+/* harmony import */ var sftp_sync_deploy_lib_sftpSync__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(sftp_sync_deploy_lib_sftpSync__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+
+function deploy(config, options) {
+  const deployer = new sftp_sync_deploy_lib_sftpSync__WEBPACK_IMPORTED_MODULE_2__.SftpSync(config, options);
+  config.remoteDir && deployer.queuifiedSftp.mkdir(config.remoteDir);
+
+  console.log(chalk__WEBPACK_IMPORTED_MODULE_0___default().green(`* Deploying to host ${config.host}`));
+  console.log(chalk__WEBPACK_IMPORTED_MODULE_0___default().grey('* local dir  = ') + deployer.localRoot);
+  console.log(chalk__WEBPACK_IMPORTED_MODULE_0___default().grey('* remote dir = ') + deployer.remoteRoot);
+  console.log('');
+
+  return deployer.sync();
+};
+
+// const { deploy } = require('sftp-sync-deploy');
 const core = __webpack_require__(2186);
 const github = __webpack_require__(5438);
 
@@ -27500,6 +27507,46 @@ module.exports = require("zlib");
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => module['default'] :
+/******/ 				() => module;
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => Object.prototype.hasOwnProperty.call(obj, prop)
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/node module decorator */
 /******/ 	(() => {
 /******/ 		__webpack_require__.nmd = (module) => {
